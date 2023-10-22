@@ -1,8 +1,13 @@
-export function Tweet() {
+export function Tweet({name, content, like}) {
+
+    const onLike = () => {
+        console.log("LIKE", name)
+    }
+    
     return (<div className="tweet">
-        <h3>Name</h3>
-        <p>Content</p>
-        <p>12 ❤️</p>
+        <h3>{name}</h3>
+        <p>{content}</p>
+        <button onclick={onLike()}>{like} ❤️</button>
     </div>
     );
 }
