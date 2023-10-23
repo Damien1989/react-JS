@@ -6,7 +6,7 @@ import { Tweet } from "./Tweet";
     {
       id:0,
       name:"Damien",
-      content:"Seuls les vrais savent",
+      content:"Magnifique !",
       like:500,
     },
 
@@ -27,7 +27,7 @@ import { Tweet } from "./Tweet";
     {
       id:3,
       name:"Mouloud",
-      content:"Wallah ci li siounist",
+      content:"Hey",
       like:0,
     },
   ];
@@ -35,12 +35,35 @@ import { Tweet } from "./Tweet";
   function App() {
 
     const [tweets, setTweet] = useState(DEFAULT_TWEET);
+    const handleSubmit = (event) => {
+      event.preventDefault();
+          console.log(event);
+
+
+          const name = event.target.name;
+          const content = event.target.content;
+        
+          const newTweet = {
+            id: tweets[0]?.id + 1 ?? 0,
+            name,
+            content,
+            like:0
+          };
+
+          console.log({newTweet});
+    };
 
     const onDelete = (TweetId) => {
     }
 
       return(
         <div>
+          <form onSubmit={handleSubmit} className="tweet-form">
+            <h4>New Tweet</h4>
+            <input placeholder="name" type="text" name="name" />
+            <input placeholder="content" type="content" name="content" />
+            <input type="submit" />
+          </form>
           <SayHello />
           <div className="tweet-container">
             {tweets.map((tweet) => {
