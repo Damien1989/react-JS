@@ -40,20 +40,21 @@ import { Tweet } from "./Tweet";
           console.log(event);
 
 
-          const name = event.target.name;
-          const content = event.target.content;
+          const name = event.target.name.value;
+          const content = event.target.content.value;
         
           const newTweet = {
-            id: tweets[0]?.id + 1 ?? 0,
+            id: tweets[tweets.length - 1]?.id + 1 ?? 0,
             name,
             content,
             like:0
           };
 
-          console.log({newTweet});
+          setTweet([...tweets, newTweet]);
     };
 
     const onDelete = (TweetId) => {
+      setTweet((curr) => curr.filter((tweet) => tweet.id !== TweetId));
     }
 
       return(
