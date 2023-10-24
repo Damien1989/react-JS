@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SayHello } from "./SayHello";
 import { Tweet } from "./Tweet";
+import { useRef } from "react";
 
     const DEFAULT_TWEET = [
     {
@@ -35,12 +36,13 @@ import { Tweet } from "./Tweet";
   function App() {
 
     const [tweets, setTweet] = useState(DEFAULT_TWEET);
+    const nameRef = useRef();
     const handleSubmit = (event) => {
       event.preventDefault();
           console.log(event);
 
 
-          const name = event.target.name.value;
+          const name = nameRef.current.value;
           const content = event.target.content.value;
         
           const newTweet = {
@@ -50,18 +52,34 @@ import { Tweet } from "./Tweet";
             like:0
           };
 
-          setTweet([...tweets, newTweet]);
+
+          addTweet(newTweet);
     };
 
-    const onDelete = (TweetId) => {
-      setTweet((curr) => curr.filter((tweet) => tweet.id !== TweetId));
+    const addTweet = (tweet) => {
+      setTweet([...tweets, tweet]);
+    }
+
+    const onDelete = (tweetId) => {
+      setTweet((curr) => curr.filter((tweet) => tweet.id !== tweetId));
+    }
+
+    const onLike = (tweetId) => {
+      setTweet((curr) => {
+        const copyTweet = [...curr];
+
+        const likedTweet = copyTweet.find((tweet) => tweet.id === tweetId);
+        likedTweet.like += 1;
+
+        return copyTweet;
+      });
     }
 
       return(
         <div>
           <form onSubmit={handleSubmit} className="tweet-form">
             <h4>New Tweet</h4>
-            <input placeholder="name" type="text" name="name" />
+            <input ref={nameRef} placeholder="name" type="text" name="name" />
             <input placeholder="content" type="content" name="content" />
             <input type="submit" />
           </form>
@@ -78,7 +96,9 @@ import { Tweet } from "./Tweet";
         onDelete={(id) => {
           onDelete(id);
         }}
-        
+        onLike={(id) => {
+        onLike(id)
+        }}  
         />
       );
     })};
