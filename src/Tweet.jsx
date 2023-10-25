@@ -4,7 +4,7 @@ export function Tweet({id, name, content, like, onDelete, onLike }) {
         <button onClick={() => onDelete(id)} className="delete">❌</button>
         <h3>{name}</h3>
         <p>{content}</p>
-        <button onclick={() => onLike(id)}>{like} ❤️</button>
+        <button onClick={() => onLike(id)}>{like} ❤️</button>
     </div>
     );
 }
