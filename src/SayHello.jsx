@@ -2,7 +2,7 @@ export function SayHello() {
     return (
         <div>
         <h1>Bonjour !</h1>
-        <p>Comment ça va ?</p>
+        <p>Envoyez-moi votre tweet !</p>
         </div>
     );
 }

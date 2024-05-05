@@ -78,9 +78,9 @@ import { useRef } from "react";
       return(
         <div>
           <form onSubmit={handleSubmit} className="tweet-form">
-            <h4>New Tweet</h4>
-            <input ref={nameRef} placeholder="name" type="text" name="name" />
-            <input placeholder="content" type="content" name="content" />
+            <h4>Nouveau tweet</h4>
+            <input ref={nameRef} placeholder="nom" type="text" name="name" />
+            <input placeholder="message..." type="content" name="content" />
             <input type="submit" />
           </form>
           <SayHello />
