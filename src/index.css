@@ -15,7 +15,7 @@
 .tweet-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .tweet-form {
@@ -24,4 +24,9 @@
   width: fit-content;
   gap: 8px;
   margin-bottom: 32px;
+}
+
+.footer-cool {
+justify-content: center;
+text-align: center;
 }

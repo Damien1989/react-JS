@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SayHello } from "./SayHello";
 import { Tweet } from "./Tweet";
 import { useRef } from "react";
+import { SayBye } from "./SayBye";
 
     const DEFAULT_TWEET = [
     {
@@ -66,17 +67,25 @@ import { useRef } from "react";
 
     const onLike = (tweetId) => {
       setTweet((curr) => {
-        const copyTweet = [...curr];
-
-        const likedTweet = copyTweet.find((tweet) => tweet.id === tweetId);
-        likedTweet.like += 1;
-
-        return copyTweet;
+        return curr.map((tweet) => {
+          if (tweet.id === tweetId) {
+          
+            return {
+              ...tweet,
+              like: tweet.like + 1,
+            };
+          }
+          return tweet; 
+        });
       });
-    }
+    };
+
+
+
 
       return(
         <div>
+          
           <form onSubmit={handleSubmit} className="tweet-form">
             <h4>Nouveau tweet</h4>
             <input ref={nameRef} placeholder="nom" type="text" name="name" />
@@ -103,6 +112,7 @@ import { useRef } from "react";
       );
     })};
     </div>
+    <SayBye />
     </div>
       );
 }
