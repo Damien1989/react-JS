@@ -14,21 +14,21 @@ import { useRef } from "react";
     {
       id:1,
       name:"Joe",
-      content:"Cool",
+      content:"J'ai beaucoup apprecié cette journée avec vous.",
       like:24,
     },
 
     {
       id:2,
       name:"Marvin",
-      content:"Génial",
+      content:"Super expérience !",
       like:36,
     },
 
     {
       id:3,
-      name:"Mouloud",
-      content:"Hey",
+      name:"Julie",
+      content:"Merci pour votre message de soutien !",
       like:0,
     },
   ];
@@ -106,4 +106,4 @@ import { useRef } from "react";
     </div>
       );
 }
-export default App;
+export default App

@@ -6,5 +6,5 @@ export function Tweet({id, name, content, like, onDelete, onLike }) {
         <p>{content}</p>
         <button onClick={() => onLike(id)}>{like} ❤️</button>
     </div>
-    );
+    )
 }
